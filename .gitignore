@@ -1,6 +1,9 @@
 # Agent & skill
 .agent/
 
+# Documents
+.docs/
+
 # Dependencies
 node_modules/
 
