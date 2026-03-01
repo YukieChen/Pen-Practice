@@ -1,0 +1,29 @@
+{
+  "name": "pen-practice",
+  "version": "0.1.0",
+  "description": "鋼筆字字帖產生器 — 純前端 Web 應用",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:run": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+"test:e2e:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "opentype.js": "^1.3.4",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "typescript": "~5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.0"
+  }
+}

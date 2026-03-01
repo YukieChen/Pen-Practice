@@ -1,0 +1,41 @@
+# Agent & skill
+.agent/
+
+# Dependencies
+node_modules/
+
+# Build output (GitHub Actions 會重新建置)
+dist/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.node.tsbuildinfo
+
+# Vite
+vite.config.js
+
+# Test & E2E
+test-results/
+playwright-report/
+coverage/
+
+# Env (若日後有 API key 等)
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+fonts/logs/
+
+# Editor (可選：若要分享設定可刪除這兩行)
+.idea/
+.vscode/
+
+# 若字型檔不推送到 repo（版權／體積），可取消註解：
+# assets/fonts/*.ttf
+# assets/fonts/*.otf

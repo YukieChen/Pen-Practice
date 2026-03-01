@@ -1,0 +1,60 @@
+[
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\文鼎中鋼筆行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\文鼎粗鋼筆行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\文鼎細鋼筆行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\超研澤中鋼筆字體.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\超研澤細行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\金梅鋼筆寬個性字.TTF",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\文鼎中鋼筆行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\文鼎粗鋼筆行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\文鼎細鋼筆行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\超研澤中鋼筆字體.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\超研澤細行楷.ttf",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\金梅鋼筆寬個性字.TTF",
+    "reason": "no-unicode-cmap"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\金梅鋼筆寬個性字.TTF",
+    "reason": "ttf-save-error",
+    "detail": "'<' not supported between instances of 'dict' and 'dict'"
+  },
+  {
+    "path": "C:\\GitRepo\\Pen-Practice\\fonts\\raw\\金梅鋼筆寬個性字.TTF",
+    "reason": "ttf-save-error",
+    "detail": "'post' table format 5.000000 not supported"
+  }
+]
