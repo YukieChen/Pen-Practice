@@ -39,11 +39,11 @@ export async function loadCustomFont(file: File): Promise<OpenTypeFont> {
   return opentype.parse(buffer);
 }
 
-/** 預設字體 URL（相對於 public/ 或 assets/） */
-const DEFAULT_FONT_URL = '/fonts/default-kai.ttf';
+/** 預設字體 URL（依 Vite base 解析，部署到 GitHub Pages 時才找得到） */
+const DEFAULT_FONT_URL = `${import.meta.env.BASE_URL}fonts/default-kai.ttf`;
 
 /** 缺字填補用字體 URL（可放隨峰體等開源字體，置於 assets/fonts/） */
-export const FALLBACK_FONT_URL = '/fonts/fallback.ttf';
+export const FALLBACK_FONT_URL = `${import.meta.env.BASE_URL}fonts/fallback.ttf`;
 
 /** 載入預設書寫字體；若無則拋錯 */
 export async function loadDefaultFont(url: string = DEFAULT_FONT_URL): Promise<OpenTypeFont> {

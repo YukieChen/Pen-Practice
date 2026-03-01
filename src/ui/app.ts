@@ -166,7 +166,7 @@ function handleGenerate(): void {
           : defaultFont;
       if (!font) {
         try {
-          defaultFont = await loadDefaultFont('/fonts/default-kai.ttf');
+          defaultFont = await loadDefaultFont();
           font = defaultFont;
         } catch {
           state.error = '無法載入預設字體，僅產生格線 PDF';
