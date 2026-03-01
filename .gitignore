@@ -2,7 +2,7 @@
 .agent/
 
 # Documents
-.docs/
+docs/
 
 # Dependencies
 node_modules/
