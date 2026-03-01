@@ -300,13 +300,6 @@ function mount(): void {
   const main = document.createElement('div');
   main.className = 'main-content';
 
-  const modeBlock = createModeSelector(state.mode, (mode) => {
-    state.mode = mode;
-    refreshUi();
-  });
-  modeBlock.setAttribute('data-step', 'mode');
-  main.appendChild(modeBlock);
-
   const contentBlock = createContentSource(
     state.contentSource,
     selectedPresetIndex,
@@ -347,6 +340,13 @@ function mount(): void {
   );
   contentBlock.setAttribute('data-step', 'content');
   main.appendChild(contentBlock);
+
+  const modeBlock = createModeSelector(state.mode, (mode) => {
+    state.mode = mode;
+    refreshUi();
+  });
+  modeBlock.setAttribute('data-step', 'mode');
+  main.appendChild(modeBlock);
 
   const sectionBlock = createSectionEditor(
     state.sections,

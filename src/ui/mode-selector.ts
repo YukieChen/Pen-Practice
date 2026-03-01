@@ -1,6 +1,6 @@
 /**
- * Step 1: 模式選擇 — 兩張卡片、綁定 mode（06 §6.1）
- * 純文字節點渲染，無 innerHTML
+ * Step 2: 模式選擇 — 兩張卡片、綁定 mode（06 §6.1）
+ * 放在「練習內容」下方，選系統預設後可立即改說明列與否
  */
 import type { ContentMode } from '../types';
 

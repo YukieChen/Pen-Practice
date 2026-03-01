@@ -1,5 +1,5 @@
 /**
- * Step 2: 內容來源 — 手動/上傳/預設、上傳區、預設按鈕群組（06 §6.2–6.4）
+ * Step 1: 內容來源 — 手動/上傳/預設、上傳區、預設按鈕群組（06 §6.2–6.4）
  */
 import type { ContentSource } from '../types';
 import { getPresetBatches } from '../data/presets';
