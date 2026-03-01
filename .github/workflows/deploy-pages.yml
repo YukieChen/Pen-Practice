@@ -1,5 +1,8 @@
 # 推送後自動建置並部署到 GitHub Pages
 # 部署完成後網址為：https://<你的帳號>.github.io/Pen-Practice/
+#
+# 若出現 "Get Pages site failed"：請到 Repo → Settings → Pages →
+# Build and deployment → Source 選「GitHub Actions」後儲存，再重新執行 workflow。
 name: Deploy to GitHub Pages
 
 on:
@@ -31,6 +34,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
