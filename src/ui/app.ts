@@ -18,6 +18,23 @@ import { createFontSelector, updateFontSelector } from './font-selector';
 import { createActionButtons, updateActionButtons } from './action-buttons';
 import { sectionChars } from '../domain/layout';
 
+/** 取得用於印在字帖上的字體顯示名稱（自訂＝檔名去副檔名，預設＝字體 family/fullName） */
+function getFontDisplayName(
+  state: AppState,
+  font: import('../types').OpenTypeFont | null
+): string {
+  if (state.fontSource === 'custom' && state.customFontFile?.name) {
+    const name = state.customFontFile.name;
+    return name.replace(/\.(ttf|otf|TTF|OTF)$/, '') || name;
+  }
+  if (font) {
+    const names = (font as unknown as { names?: { fontFamily?: { en?: string }; fullName?: { en?: string } } }).names;
+    if (names?.fontFamily?.en) return names.fontFamily.en;
+    if (names?.fullName?.en) return names.fullName.en;
+  }
+  return '預設字體';
+}
+
 let state: AppState = createInitialState();
 let selectedPresetIndex: number | null = null;
 let uploadError: string | null = null;
@@ -75,6 +92,8 @@ function refreshUi(): void {
               state.isGenerating,
               state.progress,
               state.error,
+              state.fineGridOpacity,
+              state.printFontName,
               handleGenerate,
               handleDownloadConfig
             );
@@ -100,6 +119,8 @@ function refreshUi(): void {
       state.isGenerating,
       state.progress,
       state.error,
+      state.fineGridOpacity,
+      state.printFontName,
       handleGenerate,
       handleDownloadConfig
     );
@@ -123,6 +144,7 @@ function handleGenerate(): void {
           glyphScaleUp: state.glyphScale,
           glyphOffsetXMm: state.glyphOffsetX,
           glyphOffsetYMm: state.glyphOffsetY,
+          fineGridOpacity: state.fineGridOpacity,
         },
       };
 
@@ -142,7 +164,7 @@ function handleGenerate(): void {
           }
         }
       }
-      const charArray = Array.from(allChars);
+      let charArray = Array.from(allChars);
 
       if (charArray.length === 0) {
         state.error = '版面配置中沒有任何可繪製的字元（layout 無 character）。';
@@ -172,6 +194,12 @@ function handleGenerate(): void {
           state.error = '無法載入預設字體，僅產生格線 PDF';
         }
       }
+
+      const fontDisplayName = font ? getFontDisplayName(state, font) : '';
+      if (state.printFontName && fontDisplayName) {
+        for (const c of Array.from(fontDisplayName)) allChars.add(c);
+      }
+      charArray = Array.from(allChars);
 
       const pathsPerPage: import('../types').ScaledPath[][] = layout.pages.map(() => []);
       if (font) {
@@ -246,6 +274,28 @@ function handleGenerate(): void {
                   refreshUi();
                 }
               }
+            }
+          }
+        }
+        // 可選：每頁右上角印出字體名稱（濃度 0.1）
+        if (state.printFontName && fontDisplayName && fontDisplayName.length > 0) {
+          const labelHeightMm = 4;
+          const labelWidthMm = Math.min(38, fontDisplayName.length * 3.2);
+          const labelX = runtimeConfig.marginX + runtimeConfig.gridWidth - labelWidthMm;
+          const labelY = runtimeConfig.marginY;
+          const charW = labelWidthMm / fontDisplayName.length;
+          const FONT_NAME_OPACITY = 0.1;
+          for (let pi = 0; pi < layout.pages.length; pi++) {
+            for (let i = 0; i < fontDisplayName.length; i++) {
+              const ch = fontDisplayName[i];
+              const box = {
+                x: labelX + i * charW,
+                y: labelY,
+                width: charW,
+                height: labelHeightMm,
+              };
+              const sp = renderGlyphInBox(cache, ch, box, runtimeConfig, FONT_NAME_OPACITY);
+              if (sp) pathsPerPage[pi].push(sp);
             }
           }
         }
@@ -443,6 +493,16 @@ function mount(): void {
     state.isGenerating,
     state.progress,
     state.error,
+    state.fineGridOpacity,
+    state.printFontName,
+    (v) => {
+      state.fineGridOpacity = v;
+      refreshUi();
+    },
+    (checked) => {
+      state.printFontName = checked;
+      refreshUi();
+    },
     handleGenerate,
     handleDownloadConfig
   );

@@ -23,6 +23,8 @@ export function createInitialState(): AppState {
     glyphScale: appConfig.rendering.glyphScaleUp,
     glyphOffsetX: appConfig.rendering.glyphOffsetXMm,
     glyphOffsetY: appConfig.rendering.glyphOffsetYMm,
+    fineGridOpacity: appConfig.rendering.fineGridOpacity,
+    printFontName: false,
     isGenerating: false,
     progress: 0,
     error: null,
