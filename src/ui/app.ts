@@ -115,6 +115,9 @@ function handleGenerate(): void {
 
   (async () => {
     try {
+      // 讓瀏覽器有機會重繪「產生中… 0%」，避免使用者以為按鈕沒反應
+      await new Promise<void>((resolve) => setTimeout(resolve, 0));
+
       // 使用者在 UI 拉桿上調整的 glyphScale 只影響字形大小
       const runtimeConfig: import('../config').AppConfig = {
         ...appConfig,
@@ -227,7 +230,7 @@ function handleGenerate(): void {
                   );
                   if (sp) pathsPerPage[pi].push(sp);
                   done++;
-                  if (done % 50 === 0) {
+                  if (done % 20 === 0) {
                     state.progress = Math.round((done / totalCells) * 100);
                     refreshUi();
                   }
@@ -241,7 +244,7 @@ function handleGenerate(): void {
                 const sp = renderGlyph(cache, group.character, cell, runtimeConfig);
                 if (sp) pathsPerPage[pi].push(sp);
                 done++;
-                if (done % 50 === 0) {
+                if (done % 20 === 0) {
                   state.progress = Math.round((done / totalCells) * 100);
                   refreshUi();
                 }
