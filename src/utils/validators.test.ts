@@ -84,7 +84,7 @@ describe('validators', () => {
     }
   });
 
-  it('MAX_FONT_BYTES 為 20MB（規格 E03）', () => {
-    expect(MAX_FONT_BYTES).toBe(20 * 1024 * 1024);
+  it('MAX_FONT_BYTES 為 30MB', () => {
+    expect(MAX_FONT_BYTES).toBe(30 * 1024 * 1024);
   });
 });

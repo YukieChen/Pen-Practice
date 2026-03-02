@@ -66,8 +66,8 @@ export type ValidatedParseResult = ParseSuccess | ParseFailure;
 
 export const MAX_JSON_BYTES = 5 * 1024 * 1024;
 
-/** 字型檔大小上限 20MB（規格 01/03/06 E03） */
-export const MAX_FONT_BYTES = 20 * 1024 * 1024;
+/** 字型檔大小上限 30MB（中文字型常較大） */
+export const MAX_FONT_BYTES = 30 * 1024 * 1024;
 
 export function parseAndValidate(jsonString: string): ValidatedParseResult {
   if (new TextEncoder().encode(jsonString).length > MAX_JSON_BYTES) {

@@ -412,7 +412,7 @@ function mount(): void {
         return;
       }
       if (file.size > MAX_FONT_BYTES) {
-        state.error = '字體檔案大小超過 20MB 限制，請選擇較小的字體檔';
+        state.error = '字體檔案大小超過 30MB 限制，請選擇較小的字體檔';
         state.customFontFile = null;
         refreshUi();
         return;
