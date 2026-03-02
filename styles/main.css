@@ -304,30 +304,6 @@ body {
   color: #9a3412;
 }
 
-/* PDF 選項：九宮格濃度、印出字體名稱 */
-.pdf-options-row {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-.pdf-options-row .option-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.pdf-options-row .option-label input[type="range"] {
-  width: 120px;
-}
-.pdf-options-row .option-value {
-  min-width: 2em;
-  font-variant-numeric: tabular-nums;
-}
-.pdf-options-row .checkbox-label {
-  cursor: pointer;
-}
-
 /* Action buttons */
 .action-row {
   display: flex;

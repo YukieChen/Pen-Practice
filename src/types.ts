@@ -40,10 +40,6 @@ export interface AppState {
   /** 全局 X/Y 位移（mm），對應 UI 拉桿，調整 glyph 在格子內的位置 */
   glyphOffsetX: number;
   glyphOffsetY: number;
-  /** 九宮格濃度（0–1），用於 PDF 格線，可從 UI 拉桿覆寫 */
-  fineGridOpacity: number;
-  /** 是否在字帖右上角印出字體名稱（可選） */
-  printFontName: boolean;
   isGenerating: boolean;
   progress: number;
   error: string | null;

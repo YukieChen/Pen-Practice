@@ -95,7 +95,7 @@ function buildConfig(): AppConfig {
       glyphOffsetYMm: 0,
       modelCharOpacity: 1.0,
       guideCharOpacity: 0.25,
-      fineGridOpacity: 0.2,
+      fineGridOpacity: 0.25,
       cellGridOpacity: 0.4,
       sectionDividerOpacity: 0.6,
       fineGridLineWidth: 0.1,

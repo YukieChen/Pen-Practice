@@ -1,58 +1,16 @@
 /**
  * 動作區 — 產生 PDF、下載設定檔、progress、錯誤（06 §6.9–6.10）
- * 上方一區：九宮格濃度拉桿、□ 印出字體名稱
  */
 export function createActionButtons(
   isReady: boolean,
   isGenerating: boolean,
   progress: number,
   error: string | null,
-  fineGridOpacity: number,
-  printFontName: boolean,
-  onFineGridOpacityChange: (value: number) => void,
-  onPrintFontNameChange: (checked: boolean) => void,
   onGenerate: () => void,
   onDownloadConfig: () => void
 ): HTMLElement {
   const block = document.createElement('div');
   block.className = 'section-block';
-
-  const optionsRow = document.createElement('div');
-  optionsRow.className = 'pdf-options-row';
-
-  const labelFine = document.createElement('label');
-  labelFine.className = 'option-label';
-  labelFine.textContent = '九宮格濃度';
-  const inputFine = document.createElement('input');
-  inputFine.type = 'range';
-  inputFine.min = '0.05';
-  inputFine.max = '0.5';
-  inputFine.step = '0.05';
-  inputFine.value = String(fineGridOpacity);
-  inputFine.setAttribute('aria-label', '九宮格濃度');
-  inputFine.addEventListener('input', () => {
-    const v = parseFloat(inputFine.value);
-    if (!Number.isNaN(v)) onFineGridOpacityChange(v);
-  });
-  const fineValue = document.createElement('span');
-  fineValue.className = 'option-value';
-  fineValue.textContent = String(fineGridOpacity);
-  labelFine.appendChild(inputFine);
-  labelFine.appendChild(fineValue);
-  optionsRow.appendChild(labelFine);
-
-  const labelFont = document.createElement('label');
-  labelFont.className = 'option-label checkbox-label';
-  const inputFont = document.createElement('input');
-  inputFont.type = 'checkbox';
-  inputFont.checked = printFontName;
-  inputFont.setAttribute('aria-label', '印出字體名稱');
-  inputFont.addEventListener('change', () => onPrintFontNameChange(inputFont.checked));
-  labelFont.appendChild(inputFont);
-  labelFont.appendChild(document.createTextNode(' 印出字體名稱'));
-  optionsRow.appendChild(labelFont);
-
-  block.appendChild(optionsRow);
 
   const row = document.createElement('div');
   row.className = 'action-row';
@@ -109,18 +67,9 @@ export function updateActionButtons(
   isGenerating: boolean,
   progress: number,
   error: string | null,
-  fineGridOpacity: number,
-  printFontName: boolean,
   _onGenerate: () => void,
   _onDownloadConfig: () => void
 ): void {
-  const fineSlider = root.querySelector('.pdf-options-row input[type="range"]');
-  const fineValueSpan = root.querySelector('.pdf-options-row .option-value');
-  const fontCheckbox = root.querySelector('.pdf-options-row input[type="checkbox"]');
-  if (fineSlider instanceof HTMLInputElement) fineSlider.value = String(fineGridOpacity);
-  if (fineValueSpan) fineValueSpan.textContent = String(fineGridOpacity);
-  if (fontCheckbox instanceof HTMLInputElement) fontCheckbox.checked = printFontName;
-
   const btnPdf = root.querySelector('.btn-primary');
   const btnConfig = root.querySelector('.btn-secondary');
   if (btnPdf instanceof HTMLButtonElement) {
